@@ -30,7 +30,7 @@ let defesaTotal = DEFESABASE + (nivel / 2);
 let vidaSuficiente = vida >= 70;
 let ataqueForte = ataqueTotal >= 60;
 let nivelAvancado = nivel >= 10;
-let podeEnfrentarThanatos = vidaSuficiente && (ataqueForte || nivelAvancado)
+let podeEnfrentarThanatos = vidaSuficiente && (ataqueForte || nivelAvancado);
 
 console.log(`📜 História de ${nome} 📜`);
 console.log(` `);
