@@ -9,7 +9,7 @@ let xp = 100;
 // Equipamentos do personagem.
 
 const NOMEARMA = "Stygius, a Lâmina do Submundo";
-let DANOBASE= 35;
+let DANOBASE = 35;
 const NOMEARMADURA = "Capa da escuridão";
 let DEFESABASE = 50;
 
