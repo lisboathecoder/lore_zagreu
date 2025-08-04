@@ -46,4 +46,4 @@ if (podeSair) {
 }
 console.log(`Suas defesas é um dos seus pontos fortes, ainda mais com uma ajuda de Nyx, com isso seus pontos de defesa são ${defesaTotal}.`);
 console.log(`${NOMEPERSONAGEM} está pronto para partir e enfrentar seu pai em busca da liberdade do Submundo.`);
-console.log(`-------------------------------------------------------------------------------------------------------------------------------------------------------------`)
+console.log(`-------------------------------------------------------------------------------------------------------------------------------------------------------------`);
