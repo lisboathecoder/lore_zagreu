@@ -18,8 +18,7 @@ let agilidadeBase = Math.floor(Math.random() * 50);;
 let localAtual = "Casa de Hades";
 
 // Wins / Loss  e Ruínas
-let batalhasWins = 0;
-let batalhasLoss = 0;
+let batalhasWinsLoss = 0;
 let masmorrasAvançadas = 0;
 
 let ataqueTotal = nivel + forcaBase;
@@ -30,10 +29,10 @@ let ataqueForte = ataqueTotal >= 50;
 let nivelSuficiente = nivel >= 10;
 
 console.log(`===========================================================`);
-console.log("📜 Prólogo 📜");
+console.log("📜 Prólogo");
 console.log(`===========================================================`);
 console.log(`${NOMEPERSONAGEM}, filho de Hades e ${CLASSEPERSONAGEM}, quer encontrar sua mãe Persephone fora do Reino Infernal, mas para isso terá que enfrentar diversos inimigos nas prisões do inferno, inclusive seu pai...`);
-console.log(`${NOMEPERSONAGEM} está em ${localAtual}`)
+console.log(`${NOMEPERSONAGEM} está na ${localAtual}`)
 console.log(`Sua arma principal é uma lâmina, mais conhecida como ${NOMEARMA}. ${NOMEARMA} é uma espada longa com golpes amplos e direcionais.`);
 console.log(`Nyx a Mãe Noite. é a conselheira de ${NOMEPERSONAGEM}, e ela quer dizer algo para ${NOMEPERSONAGEM}`);
 console.log(`🌑 Nyx: Você está preparado para sua jornada meu querido ${NOMEPERSONAGEM}, te presentei-o com ${NOMEARMADURA}`);
@@ -41,7 +40,7 @@ defesaTotal += 100;
 console.log(`Suas defesas é um dos seus pontos fortes, ainda mais com uma ajuda de Nyx, com isso seus pontos de defesa são ${defesaTotal}.`);
 console.log(`${NOMEPERSONAGEM} está pronto para partir e enfrentar seu pai em busca da liberdade do Submundo.`);
 console.log(`===========================================================`);
-console.log("🔴 Capítulo 1 - A fuga");
+console.log("🟢 Capítulo 1 - Tartarus");
 console.log(`===========================================================`);
 masmorrasAvançadas++;
 localAtual = "Tártarus";
@@ -63,19 +62,19 @@ if (podeEnfrentarInimigos) {
     console.log(`Após uma batalha épica, ${NOMEPERSONAGEM} derrota os Bombardeiros do Inferno e parte para Asphodel!`);
     xp += 300;
     ouro += 100;
-    batalhasWins++;
+    batalhasWinsLoss++;
 } else {
     console.log(`🔥 Bombardeiros do Inferno: Você não é páreo para nós, ${NOMEPERSONAGEM}!`);
     console.log(`${NOMEPERSONAGEM} não está preparado para essa luta, ele voltará para a Casa de Hades!`);
-    batalhasLoss++;
+    batalhasWinsLoss--;
 }
 console.log(`===========================================================`);
-console.log(`Capitulo 2 - Elysium`);
+console.log(`🔵 Capitulo 2 - Elysium`);
 console.log(`===========================================================`);
 localAtual = "Elysium";
 masmorrasAvançadas++;
 masmorrasAvançadas++;
-console.log(`Após ${NOMEPERSONAGEM} ter passado por poucas e boas em Tártarus e Asphodel, ele chega em um lugar aparentemente tranquilo, Elysium.`);
+console.log(`Após ${NOMEPERSONAGEM} ter passado por poucas e boas em Tártarus e Asphodel, ele chega em um lugar aparentemente tranquilo, ${localAtual}`);
 console.log(`Mas não é bem assim, ele encontra Thanatos, o deus da morte, que está com uma cara de poucos amigos.`);
 console.log(`☠️ Thanatos: Olá irmãozinho ${NOMEPERSONAGEM}, está tentando sair não é? Saiba que não vai conseguir sendo tão FRACO assim!`);
 console.log(`⚔️ Thanatos desafia ${NOMEPERSONAGEM} para uma batalha!`);
@@ -89,14 +88,14 @@ if (ataqueTotal > thanatosDefesa && vida > thanatosAtaque) {
     if (thanatosVida <= 0) {
         console.log(`Thanatos foi derrotado! ${NOMEPERSONAGEM} vence a batalha em Elysium!`);
         console.log(`☠️ Thanatos: Irmão ${NOMEPERSONAGEM}, vejo que está forte, tome esses ouros para trocar com o Caronte quando ele passar com seu barco, encontre seu rumo...`);
-        batalhasWins++;
+        batalhasWinsLoss++;
         xp += 300;
         ouro += 100;
     } else {
         console.log(`Thanatos resiste, mas está gravemente ferido com ${thanatosVida} de vida restante!`);
         console.log(`☠️ Thanatos: Irmão ${NOMEPERSONAGEM}, vejo que está forte, tome esses ouros para trocar com o Caronte quando ele passar com seu barco, encontre seu rumo...`);
         console.log(`${NOMEPERSONAGEM} Segue sua jornada para o última parte, o Templo do Estige`);
-        batalhasWins++;
+        batalhasWinsLoss++;
         xp += 300;
         ouro += 100;
 
@@ -106,15 +105,64 @@ if (ataqueTotal > thanatosDefesa && vida > thanatosAtaque) {
     vida -= thanatosAtaque - defesaTotal;
     console.log(`☠️ Thanatos: Você não é forte o suficiente ${NOMEPERSONAGEM}, lhe falta ódio para enfrentar seu pai...`)
     console.log(`${NOMEPERSONAGEM} foi derrotado por Thanatos e retorna à Casa de Hades!`);
-    batalhasLoss++;
+    batalhasWinsLoss--;
     ouro -= 300;
 } else {
     console.log(`Thanatos é muito poderoso! ${NOMEPERSONAGEM} sofre um ataque devastador.`);
     console.log(`☠️ Thanatos: Você não é forte o suficiente ${NOMEPERSONAGEM}, lhe falta ódio para enfrentar seu pai...`)
     vida = 1;
     ouro -= 300;
-    console.log(`${NOMEPERSONAGEM} sobrevive, mas está muito ferido com ${vida} de vida restante!`);
+    console.log(`${NOMEPERSONAGEM} sobrevive, mas está muito ferido com ${vida} de vida restante para voltar para a Casa de Hades.`);
+    batalhasWinsLoss--;
 }
 console.log(`===========================================================`);
-console.log(`Capitulo 3 - Pai...`);
+console.log(`🔴 Capitulo 3 - Pai...`);
 console.log(`===========================================================`);
+localAtual = "Templo do Estige";
+masmorrasAvançadas++
+console.log(`${NOMEPERSONAGEM} suborna seu antigo cachorro Cerberus com um Satyr Sack para deixá-lo passar sem violência pelos Portões do Inferno, mas Hades percebe sua ousadia e percebe que precisa se envolver pessoalmente no ${localAtual}.`);
+let hadesVida = Math.floor(Math.random() * 100) + 150;
+let hadesAtaque = Math.floor(Math.random() * 50) + 80;
+let hadesDefesa = Math.floor(Math.random() * 50) + 70;
+
+console.log(`😈 Hades: Como você ousa me desafiar filho TOLO! ${NOMEPERSONAGEM} VOLTE PARA CASA!`);
+
+if (ataqueTotal > hadesDefesa && vida > hadesAtaque) {
+    console.log(`${NOMEPERSONAGEM} ataca com toda sua força e surpreende Hades!`);
+    hadesVida -= ataqueTotal - hadesDefesa;
+    if (hadesVida <= 0) {
+        console.log(`🏆 Hades foi derrotado! ${NOMEPERSONAGEM} segue para encontrar sua mãe no mundo dos vivos!`);
+        batalhasWinsLoss++; 
+        xp += 500;
+        ouro += 500;
+    }
+} else if (vida - (hadesAtaque - defesaTotal) <= 0) {
+    console.log(`Hades derrota ${NOMEPERSONAGEM} sem muito esforço e humilha seu filho.`);
+    vida -= hadesAtaque - defesaTotal;
+    console.log(`😈 Hades: HAHAHA como você é estúpido ${NOMEPERSONAGEM}! Agora volte para casa e limpe o cocô que Cerberus fez no salão principal!`);
+    console.log(`${NOMEPERSONAGEM} foi derrotado por Hades e retorna à Casa de Hades!`);
+    batalhasWinsLoss--;
+    ouro -= 500;
+} else {
+    console.log(`Hades humilha seu filho ${NOMEPERSONAGEM}, mas deixa ele vivo...`);
+    vida = 1;
+    ouro -= 300;
+    batalhasWinsLoss--;
+    console.log(`${NOMEPERSONAGEM} sobrevive por pouco, mas está muito ferido com ${vida} de vida restante!`);
+    console.log(`Mesmo ainda vivo, ${NOMEPERSONAGEM} não tem outra escolha a não ser voltar para casa de Hades.`)
+}
+
+console.log(`===========================================================`);
+console.log("🏛️ Epílogo");
+console.log(`===========================================================`);
+localAtual = "Grecia Antiga";
+masmorrasAvançadas++;
+console.log(`${NOMEPERSONAGEM} finalmente encontra sua mãe Persephone na ${localAtual} e descobre a verdade sobre sua família. Sua jornada pelo Submundo o tornou mais forte e sábio.`);
+console.log(`Com ${xp} pontos de experiência e ${ouro} moedas de ouro, ${NOMEPERSONAGEM} está pronto para novos desafios além do Submundo.`);
+console.log(`===========================================================`);
+console.log(`📊 Estatísticas Finais:`);
+console.log(`Nome: ${NOMEPERSONAGEM}`);
+console.log(`Experiência: ${xp}`);
+console.log(`Ouro: ${ouro}`);
+console.log(`Vitórias: ${batalhasWinsLoss}`);
+console.log(`Masmorras Avançadas: ${masmorrasAvançadas}`);
