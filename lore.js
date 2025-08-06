@@ -132,7 +132,7 @@ if (ataqueTotal > hadesDefesa && vida > hadesAtaque) {
     hadesVida -= ataqueTotal - hadesDefesa;
     if (hadesVida <= 0) {
         console.log(`🏆 Hades foi derrotado! ${NOMEPERSONAGEM} segue para encontrar sua mãe no mundo dos vivos!`);
-        batalhasWinsLoss++; 
+        batalhasWinsLoss++;
         xp += 500;
         ouro += 500;
     }
