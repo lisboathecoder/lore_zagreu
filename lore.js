@@ -32,7 +32,7 @@ let nivelSuficiente = nivel >= 10;
 console.log(`===========================================================`);
 console.log("📜 Prólogo 📜");
 console.log(`===========================================================`);
-console.log(`${NOMEPERSONAGEM}, filho de Hades e ${CLASSEPERSONAGEM}, quer buscar uma nova aventura fora do Reino Infernal, mas para isso terá que enfrentar diversos inimigos nas prisões do inferno...`);
+console.log(`${NOMEPERSONAGEM}, filho de Hades e ${CLASSEPERSONAGEM}, quer encontrar sua mãe Persephone fora do Reino Infernal, mas para isso terá que enfrentar diversos inimigos nas prisões do inferno, inclusive seu pai...`);
 console.log(`${NOMEPERSONAGEM} está em ${localAtual}`)
 console.log(`Sua arma principal é uma lâmina, mais conhecida como ${NOMEARMA}. ${NOMEARMA} é uma espada longa com golpes amplos e direcionais.`);
 console.log(`Nyx a Mãe Noite. é a conselheira de ${NOMEPERSONAGEM}, e ela quer dizer algo para ${NOMEPERSONAGEM}`);
@@ -79,20 +79,27 @@ console.log(`Após ${NOMEPERSONAGEM} ter passado por poucas e boas em Tártarus 
 console.log(`Mas não é bem assim, ele encontra Thanatos, o deus da morte, que está com uma cara de poucos amigos.`);
 console.log(`☠️ Thanatos: Olá irmãozinho ${NOMEPERSONAGEM}, está tentando sair não é? Saiba que não vai conseguir sendo tão FRACO assim!`);
 console.log(`⚔️ Thanatos desafia ${NOMEPERSONAGEM} para uma batalha!`);
-let thanatosVida = Math.floor(Math.random() * 40) + 60; 
-let thanatosAtaque = Math.floor(Math.random() * 20) + 30; 
-let thanatosDefesa = Math.floor(Math.random() * 20) + 20; 
+let thanatosVida = Math.floor(Math.random() * 40) + 60;
+let thanatosAtaque = Math.floor(Math.random() * 20) + 30;
+let thanatosDefesa = Math.floor(Math.random() * 20) + 20;
 
 if (ataqueTotal > thanatosDefesa && vida > thanatosAtaque) {
     console.log(`${NOMEPERSONAGEM} ataca com sua Stygius direto em Thanatos!`);
     thanatosVida -= ataqueTotal - thanatosDefesa;
     if (thanatosVida <= 0) {
         console.log(`Thanatos foi derrotado! ${NOMEPERSONAGEM} vence a batalha em Elysium!`);
+        console.log(`☠️ Thanatos: Irmão ${NOMEPERSONAGEM}, vejo que está forte, tome esses ouros para trocar com o Caronte quando ele passar com seu barco, encontre seu rumo...`);
         batalhasWins++;
         xp += 300;
         ouro += 100;
     } else {
         console.log(`Thanatos resiste, mas está gravemente ferido com ${thanatosVida} de vida restante!`);
+        console.log(`☠️ Thanatos: Irmão ${NOMEPERSONAGEM}, vejo que está forte, tome esses ouros para trocar com o Caronte quando ele passar com seu barco, encontre seu rumo...`);
+        console.log(`${NOMEPERSONAGEM} Segue sua jornada para o última parte, o Templo do Estige`);
+        batalhasWins++;
+        xp += 300;
+        ouro += 100;
+
     }
 } else if (vida - (thanatosAtaque - defesaTotal) <= 0) {
     console.log(`Thanatos é muito poderoso! ${NOMEPERSONAGEM} sofre um ataque devastador.`);
@@ -100,8 +107,14 @@ if (ataqueTotal > thanatosDefesa && vida > thanatosAtaque) {
     console.log(`☠️ Thanatos: Você não é forte o suficiente ${NOMEPERSONAGEM}, lhe falta ódio para enfrentar seu pai...`)
     console.log(`${NOMEPERSONAGEM} foi derrotado por Thanatos e retorna à Casa de Hades!`);
     batalhasLoss++;
+    ouro -= 300;
 } else {
     console.log(`Thanatos é muito poderoso! ${NOMEPERSONAGEM} sofre um ataque devastador.`);
+    console.log(`☠️ Thanatos: Você não é forte o suficiente ${NOMEPERSONAGEM}, lhe falta ódio para enfrentar seu pai...`)
     vida = 1;
+    ouro -= 300;
     console.log(`${NOMEPERSONAGEM} sobrevive, mas está muito ferido com ${vida} de vida restante!`);
 }
+console.log(`===========================================================`);
+console.log(`Capitulo 3 - Pai...`);
+console.log(`===========================================================`);
