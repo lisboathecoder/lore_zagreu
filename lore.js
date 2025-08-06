@@ -2,7 +2,7 @@
 const NOMEPERSONAGEM = "Zagreu";
 const CLASSEPERSONAGEM = "Principe do Submundo";
 let vida = Math.floor(Math.random() * 100);
-let nivel = Math.floor(Math.random() * 10);
+let nivel = 10;
 let ouro = Math.floor(Math.random() * 50);
 let xp = Math.floor(Math.random() * 1000);
 // Equipamentos do personagem.
@@ -21,9 +21,11 @@ let localAtual = "Casa de Hades";
 let batalhasWinsLoss = 0;
 let masmorrasAvançadas = 0;
 
+// Cálculo de atributos totais
 let ataqueTotal = nivel + forcaBase;
 let defesaTotal = defesaBase + (nivel / 2);
 
+// Verificação de atributos
 let vidaSuficiente = vida >= 70;
 let ataqueForte = ataqueTotal >= 50;
 let nivelSuficiente = nivel >= 10;
@@ -36,11 +38,30 @@ console.log(`${NOMEPERSONAGEM} está na ${localAtual}`)
 console.log(`Sua arma principal é uma lâmina, mais conhecida como ${NOMEARMA}. ${NOMEARMA} é uma espada longa com golpes amplos e direcionais.`);
 console.log(`Nyx a Mãe Noite. é a conselheira de ${NOMEPERSONAGEM}, e ela quer dizer algo para ${NOMEPERSONAGEM}`);
 console.log(`🌑 Nyx: Você está preparado para sua jornada meu querido ${NOMEPERSONAGEM}, te presentei-o com ${NOMEARMADURA}`);
-defesaTotal += 100;
+defesaTotal += 100; // Bônus de defesa da armadura
 console.log(`Suas defesas é um dos seus pontos fortes, ainda mais com uma ajuda de Nyx, com isso seus pontos de defesa são ${defesaTotal}.`);
 console.log(`${NOMEPERSONAGEM} está pronto para partir e enfrentar seu pai em busca da liberdade do Submundo.`);
 console.log(`===========================================================`);
 console.log("🟢 Capítulo 1 - Tartarus");
+console.log(`===========================================================`);
+
+localAtual = "Quarto";
+console.log(`${NOMEPERSONAGEM} está em seu ${localAtual}, planejando sua fuga do Submundo.`);
+
+console.log(`💤 Hypnos: Ei, ${NOMEPERSONAGEM}, você tem certeza que está pronto para partir?`);
+
+// Hypnos faz as verificações para saber se o personagem está realmente pronto.
+if (nivel >= 5) {
+    console.log(`💤 Hypnos: Uau, parece que você está forte o suficiente para tentar escapar! Boa sorte, ${NOMEPERSONAGEM}!`);
+}
+if (ouro < 20) {
+    console.log(`💤 Hypnos: Você ta pobre, junta mais dinheiro amigão`);
+}
+if (vida < 30) {
+    console.log(`💤 Hypnos: Você ta muito fraco, vai dormir mais um pouco`);
+}
+
+console.log(`Com tudo pronto, ${NOMEPERSONAGEM} segue para sua jornada no Submundo.`);
 console.log(`===========================================================`);
 masmorrasAvançadas++;
 localAtual = "Tártarus";
@@ -121,9 +142,9 @@ console.log(`===========================================================`);
 localAtual = "Templo do Estige";
 masmorrasAvançadas++
 console.log(`${NOMEPERSONAGEM} suborna seu antigo cachorro Cerberus com um Satyr Sack para deixá-lo passar sem violência pelos Portões do Inferno, mas Hades percebe sua ousadia e percebe que precisa se envolver pessoalmente no ${localAtual}.`);
-let hadesVida = Math.floor(Math.random() * 100) + 150;
-let hadesAtaque = Math.floor(Math.random() * 50) + 80;
-let hadesDefesa = Math.floor(Math.random() * 50) + 70;
+let hadesVida = Math.floor(Math.random() * 100);
+let hadesAtaque = Math.floor(Math.random() * 50);
+let hadesDefesa = Math.floor(Math.random() * 50);
 
 console.log(`😈 Hades: Como você ousa me desafiar filho TOLO! ${NOMEPERSONAGEM} VOLTE PARA CASA!`);
 
@@ -162,6 +183,7 @@ console.log(`Com ${xp} pontos de experiência e ${ouro} moedas de ouro, ${NOMEPE
 console.log(`===========================================================`);
 console.log(`📊 Estatísticas Finais:`);
 console.log(`Nome: ${NOMEPERSONAGEM}`);
+console.log(`Classe: ${CLASSEPERSONAGEM}`);
 console.log(`Experiência: ${xp}`);
 console.log(`Ouro: ${ouro}`);
 console.log(`Vitórias: ${batalhasWinsLoss}`);
