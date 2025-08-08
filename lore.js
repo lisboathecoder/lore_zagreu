@@ -1,18 +1,21 @@
-// Informações do personagens.
+let i = 0; // Incremento
+//Informações do personagens.
 const NOMEPERSONAGEM = "Zagreu";
 const CLASSEPERSONAGEM = "Principe do Submundo";
 let vida = Math.floor(Math.random() * 100);
 let nivel = 10;
-let ouro = Math.floor(Math.random() * 50);
+let ouro = Math.floor(Math.random() * 500);
 let xp = Math.floor(Math.random() * 1000);
+
 // Equipamentos do personagem.
 const NOMEARMA = "Stygius, a Lâmina do Submundo";
 const NOMEARMADURA = "Capa da escuridão";
+let inventario = [NOMEARMA];
 
 // Atributos do personagem
-let forcaBase = Math.floor(Math.random() * 100);;
-let defesaBase = Math.floor(Math.random() * 50);;
-let agilidadeBase = Math.floor(Math.random() * 50);;
+let ataques = [60, 80, 50, 70, 200];
+let defesaBase = Math.floor(Math.random() * 50);
+let agilidadeBase = Math.floor(Math.random() * 50);
 
 // Locais
 let localAtual = "Casa de Hades";
@@ -21,8 +24,9 @@ let localAtual = "Casa de Hades";
 let batalhasWinsLoss = 0;
 let masmorrasAvançadas = 0;
 
-// Cálculo de atributos totais
-let ataqueTotal = nivel + forcaBase;
+let ataqueAleatorio = ataques[Math.floor(Math.random() * ataques.length)];
+let ataqueTotal = ataqueAleatorio + nivel;
+console.log (ataqueAleatorio);
 let defesaTotal = defesaBase + (nivel / 2);
 
 // Verificação de atributos
@@ -38,6 +42,7 @@ console.log(`${NOMEPERSONAGEM} está na ${localAtual}`)
 console.log(`Sua arma principal é uma lâmina, mais conhecida como ${NOMEARMA}. ${NOMEARMA} é uma espada longa com golpes amplos e direcionais.`);
 console.log(`Nyx a Mãe Noite. é a conselheira de ${NOMEPERSONAGEM}, e ela quer dizer algo para ${NOMEPERSONAGEM}`);
 console.log(`🌑 Nyx: Você está preparado para sua jornada meu querido ${NOMEPERSONAGEM}, te presentei-o com ${NOMEARMADURA}`);
+inventario.push(NOMEARMADURA); // Novo item no inventário
 defesaTotal += 100; // Bônus de defesa da armadura
 console.log(`Suas defesas é um dos seus pontos fortes, ainda mais com uma ajuda de Nyx, com isso seus pontos de defesa são ${defesaTotal}.`);
 console.log(`${NOMEPERSONAGEM} está pronto para partir e enfrentar seu pai em busca da liberdade do Submundo.`);
@@ -49,7 +54,6 @@ localAtual = "Quarto";
 console.log(`${NOMEPERSONAGEM} está em seu ${localAtual}, planejando sua fuga do Submundo.`);
 
 console.log(`💤 Hypnos: Ei, ${NOMEPERSONAGEM}, você tem certeza que está pronto para partir?`);
-
 // Hypnos faz as verificações para saber se o personagem está realmente pronto.
 if (nivel >= 5) {
     console.log(`💤 Hypnos: Uau, parece que você está forte o suficiente para tentar escapar! Boa sorte, ${NOMEPERSONAGEM}!`);
@@ -60,15 +64,39 @@ if (ouro < 20) {
 if (vida < 30) {
     console.log(`💤 Hypnos: Você ta muito fraco, vai dormir mais um pouco`);
 }
+console.log(`${NOMEPERSONAGEM} decide ir até a loja do comerciante da ${localAtual} antes de sua fuga e o comerciante lhe da 3 escolhas.`);
+let itens = [`Néctar`, `Sangue De Titã`, `Diamante`];
+if (itens[0]) {
+    ouro -= 150;
+    console.log(`Néctar`);
+} else if (itens[1]) {
+    ouro -= 250;
+    console.log(`Sangue de Titã`);
+} else {
+    ouro -= 300;
+    console.log(`Diamante`);
+}
+console.log(`O ${NOMEPERSONAGEM} decide comprar ${itens[0]} para usar durante suas batalhas`);
+
+if (ouro < 0) {
+    ouro = 0;
+}
+
+inventario.push(itens[0]);
 
 console.log(`Com tudo pronto, ${NOMEPERSONAGEM} segue para sua jornada no Submundo.`);
 console.log(`===========================================================`);
 masmorrasAvançadas++;
 localAtual = "Tártarus";
 console.log(`${NOMEPERSONAGEM} entra furtivamente no ${localAtual} e surge Poseidon que surpreende ${NOMEPERSONAGEM}`);
+
+for(i = 0; i < ataqueTotal; i++){
+    
+}
+
 if (ataqueTotal || vidaSuficiente) {
     ataqueTotal += 100;
-    vida += 50
+    vida += 50;
     console.log(`🔱 Poseindon: Meu sobrinho ${NOMEPERSONAGEM}, concedo para ti o poder dos MARES! (Ataque e Vida Atuais: ${ataqueTotal} pontos de ataque e ${vida} pontos de vida)`);
 } else {
     console.log(`🔱 Poseindon: ${NOMEPERSONAGEM}, você não merece nenhum dos meus poderes! Mas pode continuar com a sua jornada.`);
@@ -187,4 +215,5 @@ console.log(`Classe: ${CLASSEPERSONAGEM}`);
 console.log(`Experiência: ${xp}`);
 console.log(`Ouro: ${ouro}`);
 console.log(`Vitórias: ${batalhasWinsLoss}`);
+console.log(`Itens encontrados: ${inventario}`)
 console.log(`Masmorras Avançadas: ${masmorrasAvançadas}`);
